@@ -48,6 +48,7 @@ gem 'bootsnap', require: false
 
 gem 'bundler-audit'
 gem 'cpf_cnpj'
+gem 'devise', '~> 4.9'
 gem 'dry-types'
 gem 'kaminari'
 gem 'openssl', '~> 3.2.0'
@@ -56,8 +57,6 @@ gem 'reform', '>= 2.2.0'
 gem 'reform-rails'
 gem 'sidekiq', '~> 7.2.2'
 gem 'trailblazer-rails'
-gem 'devise', '~> 4.9'
-
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
