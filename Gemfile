@@ -49,6 +49,7 @@ gem 'bootsnap', require: false
 gem 'bundler-audit'
 gem 'cpf_cnpj'
 gem 'dry-types'
+gem 'kaminari'
 gem 'openssl', '~> 3.2.0'
 gem 'paranoia', '~> 2.6'
 gem 'reform', '>= 2.2.0'
