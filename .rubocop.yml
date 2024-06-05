@@ -1,0 +1,35 @@
+require:
+  - rubocop-rails
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - spec/**/*
+    - db/**/*
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+    - db/**/*
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+    - db/**/*
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: true
+  Exclude:
+    - app/concepts/**/*
