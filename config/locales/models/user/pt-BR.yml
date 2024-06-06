@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      one: Usuário
+      other: Usuários
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        remember_me: "Mantenha-me conectado"
