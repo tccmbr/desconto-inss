@@ -1,2 +1,7 @@
 pt-BR:
   login: "Entrar"
+  signup: "Não possui cadastro? Crie sua conta agora."
+  forgot_your_password: "Esqueceu sua senha?"
+  forgot_your_password_instructions: "Não recebeu instruções de confirmação?"
+  unlock_instructions: "Não recebeu instruções de desbloqueio?"
+  signin_with: "Entrar com"
