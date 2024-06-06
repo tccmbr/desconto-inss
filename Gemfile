@@ -46,18 +46,6 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'bundler-audit'
-gem 'cpf_cnpj'
-gem 'devise', '~> 4.9'
-gem 'dry-types'
-gem 'kaminari'
-gem 'openssl', '~> 3.2.0'
-gem 'paranoia', '~> 2.6'
-gem 'reform', '>= 2.2.0'
-gem 'reform-rails'
-gem 'sidekiq', '~> 7.2.2'
-gem 'trailblazer-rails'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
@@ -92,3 +80,17 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
+
+gem 'bundler-audit'
+gem 'cpf_cnpj'
+gem 'cssbundling-rails', '~> 1.4'
+gem 'devise', '~> 4.9'
+gem 'dry-types'
+gem 'jsbundling-rails', '~> 1.3'
+gem 'kaminari'
+gem 'openssl', '~> 3.2.0'
+gem 'paranoia', '~> 2.6'
+gem 'reform', '>= 2.2.0'
+gem 'reform-rails'
+gem 'sidekiq', '~> 7.2.2'
+gem 'trailblazer-rails'
