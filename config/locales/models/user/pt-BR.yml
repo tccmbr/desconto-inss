@@ -1,10 +1,12 @@
 pt-BR:
   activerecord:
     models:
+      user: Usuário
       one: Usuário
       other: Usuários
     attributes:
       user:
         email: "E-mail"
         password: "Senha"
+        password_confirmation: "Confirmar senha"
         remember_me: "Mantenha-me conectado"
