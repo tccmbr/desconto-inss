@@ -3,5 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:contact) { build(:contact, owner:) }
+
+  let(:owner) { create(:employee) }
+
+  describe '#save' do
+    before do
+      contact.save
+    end
+
+    it do
+      expect(contact).to be_persisted
+    end
+  end
 end

@@ -2,9 +2,8 @@
 
 FactoryBot.define do
   factory :contact do
-    name { 'MyString' }
-    kind_cd { 'MyString' }
-    value { 'MyString' }
-    owner { nil }
+    name { Faker::Name.name }
+    kind_cd { Contact::KINDS.sample }
+    value { Faker::PhoneNumber.phone_number }
   end
 end
