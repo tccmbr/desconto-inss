@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Desconto INSS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Dashboard", root_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Funcionários
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Novo", root_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Listar", root_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Faixa Salarial</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Relatórios
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Funcionários Agrupados por Faixa Salarial", root_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-lg-0"> 
+        <li class="nav-item dropdown">
+          <%= image_tag "avatar-man", alt: 'profile', id: "navbarDropdown", 'data-bs-toggle' => "dropdown" , class: 'img-fluid nav-link dropdown-toggle rounded-circle', width: '50px' %>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <span class='dropdown-item'>
+              <b>Autenticado como:</b><br />
+              <%= current_user.email %></span>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <%= link_to destroy_user_session_path, class: "dropdown-item link-danger", data: { turbo_method: :delete } do %>
+                <i class="fas fa-sign-out-alt fa-fw"></i> Sair
+              <% end %>
+            </li>
+          </ul>
+        </li>
+     </ul>
+    </div>
+  </div>
+</nav>
