@@ -10,7 +10,7 @@ class CreateAddresses < ActiveRecord::Migration[7.1]
       t.string :neighborhood
       t.string :city
       t.string :state
-      t.references :owner, polymorphic: true, null: false, type: :uuid
+      t.references :owner, polymorphic: true, null: false
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_07_184318) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_07_193858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_184318) do
     t.string "city"
     t.string "state"
     t.string "owner_type", null: false
-    t.uuid "owner_id", null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_type", "owner_id"], name: "index_addresses_on_owner"
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_184318) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_employees_on_deleted_at"
+  end
+
+  create_table "inss_contribution_salary_ranges", force: :cascade do |t|
+    t.integer "salary_range_number"
+    t.decimal "start_salary_range"
+    t.decimal "end_salary_range"
+    t.decimal "aliquot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
