@@ -13,7 +13,6 @@ class CreateAddresses < ActiveRecord::Migration[7.1]
       t.references :owner, polymorphic: true, null: false, type: :uuid
 
       t.timestamps
-      t.datetime :deleted_at, index: true
     end
   end
 end

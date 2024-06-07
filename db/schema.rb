@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_07_183236) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_07_184318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,9 +26,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_183236) do
     t.uuid "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_addresses_on_deleted_at"
     t.index ["owner_type", "owner_id"], name: "index_addresses_on_owner"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "kind_cd"
+    t.string "value"
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_contacts_on_owner"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "document_number"
+    t.date "birthday"
+    t.decimal "salary"
+    t.decimal "inss_discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_employees_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|

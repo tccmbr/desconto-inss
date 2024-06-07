@@ -10,6 +10,7 @@ class CreateEmployees < ActiveRecord::Migration[7.1]
       t.decimal :inss_discount
 
       t.timestamps
+      t.datetime :deleted_at, index: true
     end
   end
 end
