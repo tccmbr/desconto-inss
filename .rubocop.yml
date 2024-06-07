@@ -33,3 +33,9 @@ Metrics/ParameterLists:
   Enabled: true
   Exclude:
     - app/concepts/**/*
+
+RSpec/ExampleLength:
+  Max: 7
+
+RSpec/MultipleExpectations:
+  Max: 10
