@@ -35,7 +35,7 @@ Metrics/ParameterLists:
     - app/concepts/**/*
 
 RSpec/ExampleLength:
-  Max: 7
+  Max: 10
 
 RSpec/MultipleExpectations:
   Max: 10

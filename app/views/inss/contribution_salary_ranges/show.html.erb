@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @inss_contribution_salary_range %>
+
+<div>
+  <%= link_to "Edit this contribution salary range", edit_inss_contribution_salary_range_path(@inss_contribution_salary_range) %> |
+  <%= link_to "Back to contribution salary ranges", inss_contribution_salary_ranges_path %>
+
+  <%= button_to "Destroy this contribution salary range", @inss_contribution_salary_range, method: :delete %>
+</div>

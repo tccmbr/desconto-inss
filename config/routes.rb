@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :inss do
+    resources :contribution_salary_ranges
+  end
   resources :employees
   devise_for :users
   root to: 'home#index'

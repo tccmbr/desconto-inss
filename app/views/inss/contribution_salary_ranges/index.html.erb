@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Contribution salary ranges</h1>
+
+<div id="inss_contribution_salary_ranges">
+  <% @inss_contribution_salary_ranges.each do |inss_contribution_salary_range| %>
+    <%= render inss_contribution_salary_range %>
+    <p>
+      <%= link_to "Show this contribution salary range", inss_contribution_salary_range %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New contribution salary range", new_inss_contribution_salary_range_path %>
