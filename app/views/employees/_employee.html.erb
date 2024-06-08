@@ -1,27 +1,83 @@
-<div id="<%= dom_id employee %>">
-  <p>
-    <strong>Name:</strong>
-    <%= employee.name %>
-  </p>
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td scope="col"><%= Employee.human_attribute_name(:created_at) %></td>
+          <td><%= I18n.l(employee.created_at, format: :long) %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Employee.human_attribute_name(:document_number) %></td>
+          <td><%= employee.document_number %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Employee.human_attribute_name(:birthday) %></td>
+          <td><%= I18n.l(employee.birthday) %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Employee.human_attribute_name(:salary) %></td>
+          <td><%= humanized_money_with_symbol employee.salary %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Employee.human_attribute_name(:inss_discount) %></td>
+          <td><%= humanized_money_with_symbol employee.inss_discount %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p>
-    <strong>Document number:</strong>
-    <%= employee.document_number %>
-  </p>
-
-  <p>
-    <strong>Birthday:</strong>
-    <%= employee.birthday %>
-  </p>
-
-  <p>
-    <strong>Salary:</strong>
-    <%= employee.salary %>
-  </p>
-
-  <p>
-    <strong>Inss discount:</strong>
-    <%= employee.inss_discount %>
-  </p>
-
+  <div class="col-12" style="margin-top: 20px">
+    <h4>Contatos</h4>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <th><%= Contact.human_attribute_name(:name) %></th>
+        <th><%= Contact.human_attribute_name(:kind) %></th>
+        <th><%= Contact.human_attribute_name(:value) %></th>
+      </thead>
+      <tbody>
+        <% employee.contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.name %></td>
+            <td><%= contact.kind %></td>
+            <td><%= contact.value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12" style="margin-top: 20px">
+    <h4>Endereço</h4>
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:zip_code) %></td>
+          <td><%= employee.address.zip_code %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:street) %></td>
+          <td><%= employee.address.street %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:number) %></td>
+          <td><%= employee.address.number %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:complement) %></td>
+          <td><%= employee.address.complement %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:neighborhood) %></td>
+          <td><%= employee.address.neighborhood %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:city) %></td>
+          <td><%= employee.address.city %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Address.human_attribute_name(:state) %></td>
+          <td><%= employee.address.state %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
