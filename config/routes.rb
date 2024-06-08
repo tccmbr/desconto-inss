@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :reports do
+    get 'employees/contribution_salary_range'
+  end
   namespace :inss do
     post 'calculators/calculate_discount', to: 'calculators#calculate_discount'
     resources :contribution_salary_ranges
