@@ -29,7 +29,10 @@ document.addEventListener("turbo:load", function () {
   };
 
   const documentNumberElement = document.getElementById('employee_document_number');
-  documentNumberElement.addEventListener('keyup', (e) => e.target.value = cpfMask(e.target.value));
+
+  if (documentNumberElement) {
+    documentNumberElement.addEventListener('keyup', (e) => e.target.value = cpfMask(e.target.value));
+  }
 
   const salaryElement = document.getElementById('employee_salary');
 
