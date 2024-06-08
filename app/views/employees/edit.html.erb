@@ -1,10 +1,12 @@
-<h1>Editing employee</h1>
+<div class="row">
+  <div class="col-12">
+    <h2 class="fs-1 mb-4 text-center">Editar <%= Employee.model_name.human %></h2>
 
-<%= render "form", employee: @employee %>
+    <%= render "form", employee: @employee %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this employee", @employee %> |
-  <%= link_to "Back to employees", employees_path %>
-</div>
+    <div>
+      <%= link_to I18n.t(:list), @employee %> |
+      <%= link_to I18n.t(:back), employees_path %>
+    </div>

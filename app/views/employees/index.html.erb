@@ -1,14 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<div class="row">
+  <div class="col-12">
+    <h2 class="fs-1 mb-4 text-center"><%= Employee.model_name.human %></h2>
 
-<h1>Employees</h1>
-
-<div id="employees">
-  <% @employees.each do |employee| %>
-    <%= render employee %>
-    <p>
-      <%= link_to "Show this employee", employee %>
-    </p>
-  <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"><%= Employee.human_attribute_name(:created_at) %></th>
+          <th scope="col"><%= Employee.human_attribute_name(:name) %></th>
+          <th scope="col"><%= Employee.human_attribute_name(:document_number) %></th>
+          <th scope="col"><%= Employee.human_attribute_name(:birthday) %></th>
+          <th scope="col"><%= Employee.human_attribute_name(:salary) %></th>
+          <th scope="col"><%= Employee.human_attribute_name(:inss_discount) %></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @employees.each do |data| %>
+          <tr>
+            <td><%= I18n.l(data.created_at, format: :long) %></td>
+            <td><%= data.name %></td>
+            <td><%= data.document_number %></td>
+            <td><%= I18n.l(data.birthday) %></td>
+            <td><%= humanized_money_with_symbol data.salary %></td>
+            <td><%= humanized_money_with_symbol data.inss_discount %></td>
+            <td>
+              <%= link_to data, class: 'icon-link link-primary me-3' do %>
+                <i class="bi bi-info-circle-fill"></i>
+              <% end %>
+              <%= link_to edit_employee_path(data), class: 'icon-link link-warning' do %>
+                <i class="bi bi-pencil-square"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @employees, theme: 'bootstrap-5' %>
+    <%= link_to I18n.t(:new), new_employee_path %>
+  </div>
 </div>
-
-<%= link_to "New employee", new_employee_path %>

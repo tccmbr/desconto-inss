@@ -1,42 +1,61 @@
-<%= form_with(model: employee) do |form| %>
-  <% if employee.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
 
-      <ul>
-        <% employee.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= simple_form_for employee do |form| %>
+  <%= form.input :name %>
+  <%= form.input :document_number, input_html: { maxlength: 14} %>
+  <%= form.input :birthday, start_year: 1920, end_year: (DateTime.current.to_date).year - 16 %>
+  <%= form.input :salary, input_html: {
+                            data: {
+                              controller: "inss_calculator",
+                              action: "inss_calculator#calculate_discount"
+                            }
+                          }
+  %>
+  <%= form.input :inss_discount, input_html: { readonly: true } %>
+  <div class="row">
+    <div>
+      <h3><%= Contact.model_name.human %></h3>
+      <hr />
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.simple_fields_for :contacts do |contact| %>
+      <div class="col-4">
+        <%= contact.input :name %>
+      </div>
+      <div class="col-4">
+        <%= contact.input :kind, as: :select, collection: Contact.kinds.keys %>
+      </div>
+      <div class="col-4">
+        <%= contact.input :value %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :document_number, style: "display: block" %>
-    <%= form.text_field :document_number %>
+  <div class="row">
+    <div>
+      <h3><%= Address.model_name.human %></h3>
+      <hr />
+    </div>
+    <%= form.simple_fields_for :address do |addr| %>
+      <div class="col-3">
+        <%= addr.input :zip_code %>
+      </div>
+      <div class="col-7">
+        <%= addr.input :street %>
+      </div>
+      <div class="col-2">
+        <%= addr.input :number %>
+      </div>
+      <div class="col-3">
+        <%= addr.input :complement %>
+      </div>
+      <div class="col-3">
+        <%= addr.input :neighborhood %>
+      </div>
+      <div class="col-3">
+        <%= addr.input :city %>
+      </div>
+      <div class="col-3">
+        <%= addr.input :state %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :birthday, style: "display: block" %>
-    <%= form.date_field :birthday %>
-  </div>
-
-  <div>
-    <%= form.label :salary, style: "display: block" %>
-    <%= form.text_field :salary %>
-  </div>
-
-  <div>
-    <%= form.label :inss_discount, style: "display: block" %>
-    <%= form.text_field :inss_discount %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.button :submit, I18n.t(:save), class: 'btn btn-primary' %>
 <% end %>
