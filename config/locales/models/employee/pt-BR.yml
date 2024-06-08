@@ -1,12 +1,14 @@
 pt-BR:
-  models:
-    employee:
-      one: Funcionário
-      other: Funcionários
-  attributes:
-    employee:
-      name: Nome
-      document_number: CPF
-      birthday: Data de Nascimento
-      salary: Salário
-      inss_discount: Desconto de INSS
+  activerecord:
+    models:
+      employee:
+        one: Funcionário
+        other: Funcionários
+    attributes:
+      employee:
+        created_at: Criado em
+        name: Nome
+        document_number: CPF
+        birthday: Data de Nascimento
+        salary: Salário
+        inss_discount: Desconto de INSS

@@ -6,6 +6,7 @@ pt-BR:
         other: Faixas Salariais de Contribuição
     attributes:
       inss/contribution_salary_range:
+        created_at: Criado em
         salary_range_number: Número da Faixa Salarial
         start_salary_range: Início da Faixa Salarial
         end_salary_range: Final da Faixa Salarial
