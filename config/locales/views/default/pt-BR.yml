@@ -11,3 +11,8 @@ pt-BR:
   back: Voltar
   new: Novo
   list: Listar
+  edit: Editar
+  delete: Deletar
+  saved_sucessfully: Salvo com sucesso
+  edited_sucessfully: Editado com sucesso
+  deleted_sucessfully: Deletado com sucesso
