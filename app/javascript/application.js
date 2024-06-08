@@ -3,8 +3,41 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 import "@hotwired/turbo-rails"
 import { FetchRequest } from '@rails/request.js'
+import Chart from 'chart.js/auto';
 
-document.addEventListener("turbo:load", function () {
+document.addEventListener("turbo:load", async function () {
+  async function handleEmployeeChart() {
+    const ctx = document.getElementById('employees_chart');
+
+    if (!ctx) return;
+
+    const request = new FetchRequest('get', '/reports/employees/contribution_salary_range');
+    const response = await request.perform();
+
+    if (response.ok) {
+      const body = JSON.parse(await response.text);
+      console.log(body);
+
+      new Chart(
+        ctx,
+        {
+          type: 'bar',
+          data: {
+            labels: body.map(row => row.label),
+            datasets: [
+              {
+                label: 'Total por Faixa Salarial de Contribuição',
+                data: body.map(row => row.value)
+              }
+            ]
+          }
+        }
+      );
+    }
+  };
+
+  await handleEmployeeChart();
+
   function cpfMask(v) {
     v = v.replace(/\D/g, "");
     v = v.replace(/(\d{3})(\d)/, "$1.$2");
