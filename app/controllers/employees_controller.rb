@@ -78,7 +78,8 @@ class EmployeesController < ApplicationController
   def employee_params
     params.require(:employee).permit(:name, :document_number, :birthday, :salary, :inss_discount,
                                      contacts_attributes: %i[id name kind value],
-                                     address_attributes: %i[id zip_code street number complement neighborhood city state])
+                                     address_attributes: %i[id zip_code street number complement neighborhood city
+                                                            state])
   end
 
   def search_params
