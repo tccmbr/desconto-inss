@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :inss do
+    post 'calculators/calculate_discount', to: 'calculators#calculate_discount'
     resources :contribution_salary_ranges
   end
   resources :employees
