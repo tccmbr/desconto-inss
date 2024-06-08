@@ -1,22 +1,28 @@
-<div id="<%= dom_id contribution_salary_range %>">
-  <p>
-    <strong>Salary range number:</strong>
-    <%= contribution_salary_range.salary_range_number %>
-  </p>
-
-  <p>
-    <strong>Start salary range:</strong>
-    <%= contribution_salary_range.start_salary_range %>
-  </p>
-
-  <p>
-    <strong>End salary range:</strong>
-    <%= contribution_salary_range.end_salary_range %>
-  </p>
-
-  <p>
-    <strong>Aliquot:</strong>
-    <%= contribution_salary_range.aliquot %>
-  </p>
-
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:created_at) %></td>
+          <td><%= I18n.l(contribution_salary_range.created_at, format: :long) %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:salary_range_number) %></td>
+          <td><%= contribution_salary_range.salary_range_number %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:start_salary_range) %></td>
+          <td><%= humanized_money_with_symbol contribution_salary_range.start_salary_range %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:end_salary_range) %></td>
+          <td><%= humanized_money_with_symbol contribution_salary_range.end_salary_range %></td>
+        </tr>
+        <tr>
+          <td scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:aliquot) %></td>
+          <td><%= contribution_salary_range.aliquot %>%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
