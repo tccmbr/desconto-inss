@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.order(:name).page(search_params[:page]).per(5)
   end
 
   # GET /employees/1 or /employees/1.json
@@ -14,10 +14,18 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    @employee.build_address
+    @employee.contacts.build
+    @employee.contacts.build
+    @employee.contacts.build
   end
 
   # GET /employees/1/edit
-  def edit; end
+  def edit
+    @employee.contacts.build
+    @employee.contacts.build
+    @employee.contacts.build
+  end
 
   # POST /employees or /employees.json
   def create
@@ -36,6 +44,8 @@ class EmployeesController < ApplicationController
 
   # PATCH/PUT /employees/1 or /employees/1.json
   def update
+    Employee::SalaryUpdateJob.perform_later(employee: @employee, salary: employee_params[:salary])
+
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully updated.' }
@@ -66,6 +76,12 @@ class EmployeesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def employee_params
-    params.require(:employee).permit(:name, :document_number, :birthday, :salary, :inss_discount)
+    params.require(:employee).permit(:name, :document_number, :birthday, :salary, :inss_discount,
+                                     contacts_attributes: %i[name kind value],
+                                     address_attributes: %i[zip_code street number complement neighborhoo d city state])
+  end
+
+  def search_params
+    params.permit(:page)
   end
 end
