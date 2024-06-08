@@ -1,14 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div class="row">
+  <div class="col-12">
+    <h2 class="fs-1 mb-4 text-center"><%= Inss::ContributionSalaryRange.model_name.human %></h2>
 
-<h1>Contribution salary ranges</h1>
-
-<div id="inss_contribution_salary_ranges">
-  <% @inss_contribution_salary_ranges.each do |inss_contribution_salary_range| %>
-    <%= render inss_contribution_salary_range %>
-    <p>
-      <%= link_to "Show this contribution salary range", inss_contribution_salary_range %>
-    </p>
-  <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:created_at) %></th>
+          <th scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:salary_range_number) %></th>
+          <th scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:start_salary_range) %></th>
+          <th scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:end_salary_range) %></th>
+          <th scope="col"><%= Inss::ContributionSalaryRange.human_attribute_name(:aliquot) %></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inss_contribution_salary_ranges.each do |data| %>
+          <tr>
+            <td><%= I18n.l(data.created_at, format: :long) %></td>
+            <td><%= data.salary_range_number %></td>
+            <td><%= humanized_money_with_symbol data.start_salary_range %></td>
+            <td><%= humanized_money_with_symbol data.end_salary_range %></td>
+            <td><%= data.aliquot %>%</td>
+            <td>
+              <%= link_to data, class: 'icon-link link-primary me-3' do %>
+                <i class="bi bi-info-circle-fill"></i>
+              <% end %>
+              <%= link_to edit_inss_contribution_salary_range_path(data), class: 'icon-link link-warning' do %>
+                <i class="bi bi-pencil-square"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to I18n.t(:new), new_inss_contribution_salary_range_path %>
+  </div>
 </div>
-
-<%= link_to "New contribution salary range", new_inss_contribution_salary_range_path %>
