@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      inss/contribution_salary_range:
+        one: Faixa Salarial de Contribuição
+        other: Faixas Salariais de Contribuição
+    attributes:
+      inss/contribution_salary_range:
+        salary_range_number: Número da Faixa Salarial
+        start_salary_range: Início da Faixa Salarial
+        end_salary_range: Final da Faixa Salarial
+        aliquot: Alíquota

@@ -1,9 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      user: Usuário
-      one: Usuário
-      other: Usuários
+      user:
+        one: Usuário
+        other: Usuários
     attributes:
       user:
         email: "E-mail"
