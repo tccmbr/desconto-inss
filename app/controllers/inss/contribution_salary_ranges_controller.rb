@@ -27,7 +27,7 @@ class Inss::ContributionSalaryRangesController < ApplicationController
       if @inss_contribution_salary_range.save
         format.html do
           redirect_to inss_contribution_salary_range_url(@inss_contribution_salary_range),
-                      notice: 'Contribution salary range was successfully created.'
+                      notice: I18n.t(:saved_sucessfully)
         end
         format.json { render :show, status: :created, location: @inss_contribution_salary_range }
       else
@@ -43,7 +43,7 @@ class Inss::ContributionSalaryRangesController < ApplicationController
       if @inss_contribution_salary_range.update(inss_contribution_salary_range_params)
         format.html do
           redirect_to inss_contribution_salary_range_url(@inss_contribution_salary_range),
-                      notice: 'Contribution salary range was successfully updated.'
+                      notice: I18n.t(:edited_sucessfully)
         end
         format.json { render :show, status: :ok, location: @inss_contribution_salary_range }
       else
@@ -59,7 +59,7 @@ class Inss::ContributionSalaryRangesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to inss_contribution_salary_ranges_url, notice: 'Contribution salary range was successfully destroyed.'
+        redirect_to inss_contribution_salary_ranges_url, notice: I18n.t(:deleted_sucessfully)
       end
       format.json { head :no_content }
     end

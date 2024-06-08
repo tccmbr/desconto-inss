@@ -33,7 +33,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully created.' }
+        format.html { redirect_to employee_url(@employee), notice: I18n.t(:saved_sucessfully) }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,12 +43,12 @@ class EmployeesController < ApplicationController
   end
 
   # PATCH/PUT /employees/1 or /employees/1.json
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     Employee::SalaryUpdateJob.perform_later(employee: @employee, salary: employee_params[:salary])
 
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully updated.' }
+        format.html { redirect_to employee_url(@employee), notice: I18n.t(:edited_sucessfully) }
         format.json { render :show, status: :ok, location: @employee }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class EmployeesController < ApplicationController
     @employee.destroy!
 
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to employees_url, notice: I18n.t(:deleted_sucessfully) }
       format.json { head :no_content }
     end
   end
@@ -77,8 +77,8 @@ class EmployeesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def employee_params
     params.require(:employee).permit(:name, :document_number, :birthday, :salary, :inss_discount,
-                                     contacts_attributes: %i[name kind value],
-                                     address_attributes: %i[zip_code street number complement neighborhoo d city state])
+                                     contacts_attributes: %i[id name kind value],
+                                     address_attributes: %i[id zip_code street number complement neighborhood city state])
   end
 
   def search_params
