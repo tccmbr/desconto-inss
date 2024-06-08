@@ -1,24 +1,14 @@
-# README
+# DESCONTO INSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto teste para a empresa Credshop.
 
-Things you may want to cover:
+Criar uma aplicação “Desconto INSS” no Rails com os seguintes requisitos:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+● Rails 5 +;
+● PostgreSQL;
+● Bootstrap;
+● Chart.js;
+● Rubocop rails;
+● Kaminari;
+● Redis;
+● Sidekiq.
