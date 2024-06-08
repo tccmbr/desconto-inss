@@ -81,6 +81,7 @@ group :test do
   gem 'simplecov', require: false
 end
 
+gem 'bootstrap5-kaminari-views'
 gem 'bundler-audit'
 gem 'cpf_cnpj'
 gem 'cssbundling-rails', '~> 1.4'
@@ -88,6 +89,7 @@ gem 'devise', '~> 4.9'
 gem 'dry-types'
 gem 'jsbundling-rails', '~> 1.3'
 gem 'kaminari'
+gem 'money-rails', '~> 1.12'
 gem 'openssl', '~> 3.2.0'
 gem 'paranoia', '~> 2.6'
 gem 'reform', '>= 2.2.0'
